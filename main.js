@@ -20,16 +20,10 @@ camera.position.y = 8
 camera.position.z = 13
 camera.lookAt(0,2,0)
 
-var carregador = new THREE.GLTFLoader()
-// Clock
-var clock = new THREE.Clock();
-// Animation Mixer
-var animMixer = new THREE.AnimationMixer(scene);
 
 
-carregador.load('models/TV.gltf', function ( gltf ) {
+new THREE.GLTFLoader().load('models/TV.gltf', function ( gltf ) {
     scene.add( gltf.scene )
-
 
     scene.traverse( function(x) {
         if (x.isMesh) {
@@ -38,32 +32,14 @@ carregador.load('models/TV.gltf', function ( gltf ) {
         }
 
     })
-})
-
-/*carregador.load('models/openEverything.gltf', function (gltf) {
-    scene.add(gltf.scene)
-    
-    // Finds the KeyAction animation
-    keyActionClip = THREE.AnimationClip.findByName(gltf.animations, 'KeyAction')
-    // Clips it
-    action = animMixer.clipAction(keyActionClip)
-    // Plays it
-    //action.play()
-    action.setLoop(THREE.LoopOnce)
-})*/
+}
+)
 
 addLights()
 animate()
 
-/*document.getElementById('btn_play').addEventListener('click', function playAnim(){
-    action.play()
-});*/
-
 function animate() {
     requestAnimationFrame( animate )
-
-    animMixer.update(clock.getDelta())
-
     renderer.render( scene, camera )
 }
 
