@@ -7,80 +7,272 @@
         body {
             overflow: scroll;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toggle {
+        --width: 80px;
+        --height: calc(var(--width) / 3);
+
+        position: relative;
+        display: inline-block;
+        width: var(--width);
+        height: var(--height);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        border-radius: var(--height);
+        cursor: pointer;
+        }
+
+        .toggle input {
+        display: none;
+        }
+
+        .toggle .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--height);
+        background-color: #ccc;
+        transition: all 0.4s ease-in-out;
+        }
+
+        .toggle .slider::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(var(--height));
+        height: calc(var(--height));
+        border-radius: calc(var(--height) / 2);
+        background-color: #fff;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease-in-out;
+        }
+
+        .toggle input:checked+.slider {
+        background-color: #2196F3;
+        }
+
+        .toggle input:checked+.slider::before {
+        transform: translateX(calc(var(--width) - var(--height)));
+        }
+
+        .toggle .labels {
+        position: absolute;
+        top: 8px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
+        font-family: sans-serif;
+        transition: all 0.4s ease-in-out;
+        }
+
+        .toggle .labels::after {
+        content: attr(data-off);
+        position: absolute;
+        right: 5px;
+        color: #4d4d4d;
+        opacity: 1;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        transition: all 0.4s ease-in-out;
+        }
+
+        .toggle .labels::before {
+        content: attr(data-on);
+        position: absolute;
+        left: 5px;
+        color: #ffffff;
+        opacity: 0;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+        transition: all 0.4s ease-in-out;
+        }
+
+        .toggle input:checked~.labels::after {
+        opacity: 0;
+        }
+
+        .toggle input:checked~.labels::before {
+        opacity: 1;
+        }
+
+        .head{
+            width: 100%;
+            height: 10%;
+            display: flex;
+        }
+
+        .maintable{
+            width: 90%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            margin: auto;
+        }
+        .maintable .items{
+            width: 7%;
+            height: auto;
+            background-color: #2196F3;
+        }
+        .maintable .items img{
+            width: 100%;
+            height: fit-content;
+        }
+        .maintable .imgObj{
+            width: 63%;
+            height: auto;
+            background-color: orange;
+        }
+        .maintable .imgObj .box{
+            
+            background-color: red;
+        }
+        .maintable .imgObj .imgObject{
+           width: auto;
+           margin: auto;
+        }
+
+        .maintable .imgObj .imgObject .divimagem{
+            width: 90%;
+            margin: auto;
+        }
+
+        .maintable .imgObj .imgObject #imgdet{
+            width: 100%;
+        }
+        .maintable .iteminfo{
+            width: 35%;
+            height: auto;
+            background-color: green;
         }
     </style>
+    <script>
+        function homepage(){
+            window.open("./index.html")
+        }
+        function getImage(imagem){
+            console.log(imagem)
+            document.getElementById("imgdet").src=imagem
+        }
+        function getTicked(){
+            if(document.getElementById("check").checked){
+                document.getElementById("imgdet").style.display = "none"
+                document.getElementById("obj3d").style.display = "block"
+            }else{
+                document.getElementById("obj3d").style.display = "none"
+                document.getElementById("imgdet").style.display = "block"
+            }
+        }
+</script>
 </head>
 <body>
-    <table width="100%" height="100px">
+    <div class="head">
+        <img src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()"/>
+    </div>
+    <div>
+        <p>
+            <button id="btn_leftDoor">Left Door</button>
+            <button id="btn_rightDoor">Right Door</button>
+            <button id="btn_botDrawer">Bottom Drawer</button>
+            <button id="btn_topDrawer">Top Drawer</button>
+        </p>
+    </div>
+    <div class="maintable">
+        <div class="items">
+            <div><img src="images/Movel1.png" width="100px" height="100px" onclick="getImage('images/Movel1.png')"></div>
+            <div><img src="images/Movel1_2.png" width="100px" height="100px" onclick="getImage('images/Movel1_2.png')"></div>
+            <div><img src="images/Movel1_3.png" width="100px" height="100px" onclick="getImage('images/Movel1_3.png')"></div>
+            <div><img src="images/Movel1_4.png" width="100px" height="100px" onclick="getImage('images/Movel1_4.png')"></div>
+            <div><img src="images/Movel1_5.png" width="100px" height="100px" onclick="getImage('images/Movel1_5.png')"></div>
+            <div><img src="images/Movel1_6.png" width="100px" height="100px" onclick="getImage('images/Movel1_6.png')"></div>
+        </div>
+        <div class="imgObj">
+            <div class="box">
+                <label class="toggle">
+                    <input type="checkbox" id="check" onclick="getTicked()">
+                    <span class="slider"></span>
+                    <span class="labels" data-on="Imagem" data-off="3D"></span>
+                </label>
+            </div>
+            <div class="imgObject">
+                <div class="divimagem">
+                    <img id="imgdet" src="images/Movel1.png">
+                </div>
+                
+                <div id="obj3d" width="600px" height="600px">
+                    <script src="/node_modules/three/build/three.min.js"></script>
+                    <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+                    <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+                    <script src="main.js"></script>
+                </div>
+            </div>
+        </div>
+        <div class="iteminfo">
+            info
+        </div>
+    </div>
+    <!-- <table class="maintable" width="80%" height="300px" align="center">
         <tr>
             <td>
-                <img src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()"/>
-            </td>
-        </tr>
-        <div>
-            <p>
-                <button id="btn_leftDoor">Left Door</button>
-                <button id="btn_rightDoor">Right Door</button>
-                <button id="btn_botDrawer">Bottom Drawer</button>
-                <button id="btn_topDrawer">Top Drawer</button>
-            </p>
-
-        </div>
-    </table>
-    <script src="/node_modules/three/build/three.min.js"></script>
-    <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
-    <script src="main.js"></script>
-    <table width="80%" height="300px" align="center">
-        <colgroup>
-            <col style="width: 15%"/>
-            <col style="width: 55%"/>
-            <col style="width: 30%"/>
-        </colgroup>
-        <tr>
-            <td class="item" /*onclick="openPage()"*/>
                 <table>
                     <tr>
                         <td>
-                            <img src="images/Movel1.png" width="100px" height="100px">
+                            <img src="images/Movel1.png" width="100px" height="100px" onclick="getImage('images/Movel1.png')">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="images/Movel1_2.png" width="100px" height="100px">
+                            <img src="images/Movel1_2.png" width="100px" height="100px" onclick="getImage('images/Movel1_2.png')">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="images/Movel1_3.png" width="100px" height="100px">
+                            <img src="images/Movel1_3.png" width="100px" height="100px" onclick="getImage('images/Movel1_3.png')">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="images/Movel1_4.png" width="100px" height="100px">
+                            <img src="images/Movel1_4.png" width="100px" height="100px" onclick="getImage('images/Movel1_4.png')">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="images/Movel1_5.png" width="100px" height="100px">
+                            <img src="images/Movel1_5.png" width="100px" height="100px" onclick="getImage('images/Movel1_5.png')">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="images/Movel1_6.png" width="100px" height="100px">
+                            <img src="images/Movel1_6.png" width="100px" height="100px" onclick="getImage('images/Movel1_6.png')">
                         </td>
                     </tr>
                 </table>
             </td>
-            <td class="item" /*onclick="openMaint()">
-                Imagem detalhada e modelo 3D
-                
+            <td class="imageandobject">
+                <div class="imag">
+                    <label class="toggle">
+                        <input type="checkbox" id="check" onclick="getTicked()">
+                        <span class="slider"></span>
+                        <span class="labels" data-on="Imagem" data-off="3D"></span>
+                    </label>
+                    <div class="imgObj">
+                        <img id="imgdet" width="600px" height="600px" src="images/Movel1.png">
+                        <div id="obj3d" width="600px" height="600px">
+                            <script src="/node_modules/three/build/three.min.js"></script>
+                            <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+                            <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+                            <script src="main.js"></script>
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td class="item" onclick="openMaint()">
+            <td class="info">
                 Informação do Produto
             </td>
         </tr>
-    </table>
+    </table> -->
     
 </body>
 <script>
