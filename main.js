@@ -1,8 +1,14 @@
+let btn_leftDoor = document.getElementById('btn_leftDoor');
+let btn_rightDoor = document.getElementById('btn_rightDoor');
+let btn_botDrawer = document.getElementById('btn_botDrawer');
+let btn_topDrawer = document.getElementById('btn_topDrawer');
+
 let scene = new THREE.Scene()
 scene.background = new THREE.Color(0xE5E5DA)
 let camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 )
 let renderer = new THREE.WebGLRenderer()
 let controls = new THREE.OrbitControls(camera, renderer.domElement)
+let material = new THREE.Mesh('models/textures');
 
 let axes = new THREE.AxesHelper(10)
 scene.add(axes)
@@ -15,6 +21,11 @@ renderer.setSize( window.innerWidth, window.innerHeight )
 renderer.shadowMap.enabled = true
 document.body.appendChild( renderer.domElement )
 
+// Clock
+var clock = new THREE.Clock();
+// Animation Mixer
+var animMixer = new THREE.AnimationMixer(scene);
+
 camera.position.x = -5
 camera.position.y = 8
 camera.position.z = 13
@@ -22,24 +33,63 @@ camera.lookAt(0,2,0)
 
 
 
-new THREE.GLTFLoader().load('models/TV.gltf', function ( gltf ) {
-    scene.add( gltf.scene )
+new THREE.GLTFLoader().load(
+    'models/TV.gltf', 
+    function ( gltf ) {
+        scene.add( gltf.scene )
+        scene.traverse( function(x) {
+            if (x.isMesh) {
+                x.castShadow = true
+                x.receiveShadow = true			
+            }
 
-    scene.traverse( function(x) {
-        if (x.isMesh) {
-            x.castShadow = true
-            x.receiveShadow = true			
-        }
+        })
 
-    })
-}
-)
+        leftDoorOpen = THREE.AnimationClip.findByName(gltf.animations, 'leftDoorOpen')
+        rightDoorOpen = THREE.AnimationClip.findByName(gltf.animations, 'rightDoorOpen')
+        topDrawerOpen = THREE.AnimationClip.findByName(gltf.animations, 'topDrawerOpen')
+        botDrawerOpen = THREE.AnimationClip.findByName(gltf.animations, 'botDrawerOpen')
+        // Clips it
+        leftDoor = animMixer.clipAction(leftDoorOpen)
+        rightDoor = animMixer.clipAction(rightDoorOpen)
+        topDrawer = animMixer.clipAction(topDrawerOpen)
+        botDrawer = animMixer.clipAction(botDrawerOpen)
+        // Plays it
+        //action.play()
+        leftDoor.setLoop(THREE.LoopOnce)
+        rightDoor.setLoop(THREE.LoopOnce)
+        topDrawer.setLoop(THREE.LoopOnce)
+        botDrawer.setLoop(THREE.LoopOnce)
+        leftDoor.clampWhenFinished = true;
+        rightDoor.clampWhenFinished = true;
+        topDrawer.clampWhenFinished = true;
+        botDrawer.clampWhenFinished = true;
+})
+
+btn_leftDoor.addEventListener('click', function leftDoorOpen(){
+    leftDoor.play()
+});
+
+btn_rightDoor.addEventListener('click', function rightDoorOpen(){
+    rightDoor.play()
+})
+
+btn_topDrawer.addEventListener('click', function topDrawerOpen(){
+    topDrawer.play()
+})
+
+btn_botDrawer.addEventListener('click', function botDrawerOpen(){
+    botDrawer.play()
+})
 
 addLights()
 animate()
 
 function animate() {
     requestAnimationFrame( animate )
+    
+    animMixer.update(clock.getDelta())
+
     renderer.render( scene, camera )
 }
 

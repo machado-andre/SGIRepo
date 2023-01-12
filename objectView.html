@@ -9,11 +9,6 @@
             margin: 0;
         }
     </style>
-    <script>
-        function homepage(){
-            window.open("./index.html")
-        }
-    </script>
 </head>
 <body>
     <table width="100%" height="100px">
@@ -22,7 +17,20 @@
                 <img src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()"/>
             </td>
         </tr>
+        <div>
+            <p>
+                <button id="btn_leftDoor">Left Door</button>
+                <button id="btn_rightDoor">Right Door</button>
+                <button id="btn_botDrawer">Bottom Drawer</button>
+                <button id="btn_topDrawer">Top Drawer</button>
+            </p>
+
+        </div>
     </table>
+    <script src="/node_modules/three/build/three.min.js"></script>
+    <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+    <script src="main.js"></script>
     <table width="80%" height="300px" align="center">
         <colgroup>
             <col style="width: 15%"/>
@@ -30,7 +38,7 @@
             <col style="width: 30%"/>
         </colgroup>
         <tr>
-            <td class="item" onclick="openPage()">
+            <td class="item" /*onclick="openPage()"*/>
                 <table>
                     <tr>
                         <td>
@@ -64,8 +72,9 @@
                     </tr>
                 </table>
             </td>
-            <td class="item" onclick="openMaint()">
+            <td class="item" /*onclick="openMaint()">
                 Imagem detalhada e modelo 3D
+                
             </td>
             <td class="item" onclick="openMaint()">
                 Informação do Produto
@@ -74,4 +83,9 @@
     </table>
     
 </body>
+<script>
+    function homepage(){
+        window.open("./index.html")
+    }
+</script>
 </html>
