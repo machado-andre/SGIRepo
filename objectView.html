@@ -125,14 +125,10 @@
             width: 63%;
             height: auto;
             background-color: orange;
-            display:flex;
-            flex-direction: column;
         }
         .maintable .imgObj .box{
-            display: flex;
-            align-self: flex-end;
-            padding-right: 20px;
-            padding-top: 5px;
+            
+            background-color: red;
         }
         .maintable .imgObj .imgObject{
            width: auto;
@@ -144,12 +140,7 @@
             margin: auto;
         }
 
-        .maintable .imgObj .imgObject #obj3d{
-            width: 90%;
-            margin: auto;
-        }
-
-        .maintable .imgObj .imgObject #imgdet{
+        .maintable .imgObj .imgObject #canvas{
             width: 100%;
         }
         .maintable .iteminfo{
@@ -164,16 +155,15 @@
         }
         function getImage(imagem){
             console.log(imagem)
-            document.getElementById("imgdet").src=imagem
+            document.getElementById("canvas").src=imagem
         }
         function getTicked(){
             if(document.getElementById("check").checked){
-                //document.getElementById("imgdet").style.display = "none"
-                //document.getElementById("obj3d").style.display = "block"
-                document.getElementById("imgObject").innerHTML='<img id="imgdet" src="images/Movel1.png">'
-            }else{
                 //document.getElementById("obj3d").style.display = "none"
-                //document.getElementById("imgdet").style.display = "block"
+                document.getElementById("canvas").style.display = "block"
+            }else{
+                document.getElementById("canvas").style.display = "none"
+                //document.getElementById("obj3d").style.display = "block"
             }
         }
 </script>
@@ -200,29 +190,27 @@
             <div><img src="images/Movel1_6.png" width="100px" height="100px" onclick="getImage('images/Movel1_6.png')"></div>
         </div>
         <div class="imgObj">
-            <div class="box">
-                <label class="toggle">
-                    <input type="checkbox" id="check" onclick="getTicked()">
-                    <span class="slider"></span>
-                    <span class="labels" data-on="Imagem" data-off="3D"></span>
-                </label>
-            </div>
-            <div class="imgObject" id="imgObject">
-                <div class="divimagem" id="imgdet">
-                    teste
-                    <!-- <img id="imgdet" src="images/Movel1.png"> -->
+            <label class="toggle">
+                <input type="checkbox" id="check" onclick="getTicked()">
+                <span class="slider"></span>
+                <span class="labels" data-on="Imagem" data-off="3D"></span>
+            </label>
+            <canvas id="canvas"></canvas>
+                <div class="box">
                 </div>
-            </div>
-            <div id="obj3d">
-                <script src="/node_modules/three/build/three.min.js"></script>
-                <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
-                <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
-                <script src="main.js"></script>
-            </div>
+                <div class="imgObject">
+                    <!--<div class="divimagem">
+                        <img  src="images/Movel1.png">
+                    </div> -->
+                </div>
         </div>
         <div class="iteminfo">
             info
         </div>
+                <script src="/node_modules/three/build/three.min.js"></script>
+                <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+                <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+                <script src="main.js"></script>
     </div>
     <!-- <table class="maintable" width="80%" height="300px" align="center">
         <tr>
@@ -285,4 +273,9 @@
     </table> -->
     
 </body>
+<script>
+    function homepage(){
+        window.open("./index.html")
+    }
+</script>
 </html>

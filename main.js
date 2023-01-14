@@ -6,21 +6,24 @@ let btn_topDrawer = document.getElementById('btn_topDrawer');
 let scene = new THREE.Scene()
 scene.background = new THREE.Color(0xE5E5DA)
 let camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 )
-let renderer = new THREE.WebGLRenderer()
+let myCanvas = document.getElementById('canvas')
+var renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
+document.body.appendChild(renderer.domElement);
+
+renderer.setSize( window.innerWidth/3, window.innerHeight/3)
+renderer.shadowMap.enabled = true
 let controls = new THREE.OrbitControls(camera, renderer.domElement)
 let material = new THREE.Mesh('models/textures');
 
-let axes = new THREE.AxesHelper(10)
+/*let axes = new THREE.AxesHelper(10)
 scene.add(axes)
 let grid = new THREE.GridHelper()
-scene.add(grid)
+scene.add(grid)*/
 
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.toneMappingExposure = 4;
-renderer.setSize( window.innerWidth, window.innerHeight )
-renderer.shadowMap.enabled = true
-document.body.appendChild( renderer.domElement )
 
+var textureLoader = new THREE.TextureLoader();
 // Clock
 var clock = new THREE.Clock();
 // Animation Mixer
@@ -44,7 +47,7 @@ new THREE.GLTFLoader().load(
             }
 
         })
-
+        console.log(scene);
         leftDoorOpen = THREE.AnimationClip.findByName(gltf.animations, 'leftDoorOpen')
         rightDoorOpen = THREE.AnimationClip.findByName(gltf.animations, 'rightDoorOpen')
         topDrawerOpen = THREE.AnimationClip.findByName(gltf.animations, 'topDrawerOpen')
@@ -64,6 +67,19 @@ new THREE.GLTFLoader().load(
         rightDoor.clampWhenFinished = true;
         topDrawer.clampWhenFinished = true;
         botDrawer.clampWhenFinished = true;
+        
+        rack = scene.getObjectByName('rack');
+        rack.material.map = textureLoader.load("models/textures/Wood028_2K_Color.png");
+
+        doorRight1 = scene.getObjectByName('Cube015');
+        doorRight2 = scene.getObjectByName('Cube015_2');
+        doorRight1.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
+        doorRight2.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
+        
+        doorLeft1 = scene.getObjectByName('Cube009');
+        doorLeft2 = scene.getObjectByName('Cube009_2');
+        doorLeft1.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
+        doorLeft2.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
 })
 
 btn_leftDoor.addEventListener('click', function leftDoorOpen(){
