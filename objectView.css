@@ -115,6 +115,7 @@ body {
 .maintable .items img {
     width: 100%;
     height: fit-content;
+    cursor: pointer;
 }
 
 .maintable .imgObj {
@@ -137,7 +138,7 @@ body {
 }
 
 .maintable .imgObj .imgObject #imgObject{
-    width: 90%;
+    width: 80%;
     margin: auto;
 }
 
@@ -145,14 +146,115 @@ body {
     width:100%
 }
 
-
 .maintable .iteminfo {
     width: 35%;
     height: auto;
+    display: flex;
+    border-left: lightgrey solid 1px;
+    -webkit-box-shadow: inset 0 0 10px #aaaaaa;
+}
+
+.maintable .iteminfo .infocanvas{
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.maintable .iteminfo .infocanvas .tipos{
+   display: flex;
+   flex-direction: column;
+}
+
+.maintable .iteminfo .infocanvas .tipos .tipoMadeira{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.maintable .iteminfo .infocanvas .tipos .tipoMadeira .item{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 50px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.maintable .iteminfo .infocanvas .botaocarrinho {
+    width: 80%;
+    margin:auto;
+    align-self: flex-end;
+}
+
+.maintable .iteminfo .infocanvas .botaocarrinho button{
+    width: 100%;
+    height: 60px;
+    color: #fff;
+    background-color: #4d4d4d;
+    margin: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0; 
+    font-size: large;
 }
 
 #canvas {
     z-index: 2;
-    left: 175px;
-    top: 210px;
+    position: absolute;
+    top: 120px;
+    left:20px;
+}
+
+.button {
+    background: #767676; 
+    border: 2px solid #000000; 
+    border-radius: 10px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 13px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 1
+}
+
+.commands{
+    display:flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 30%;
+}
+
+.colors{
+    display: flex;
+    flex-direction: column;
+}
+
+.colors .textura{
+    display: flex;
+    flex-direction: column;
+}
+
+.colors .textura .tipos{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.colors .textura .tipos .item{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 50px;
+    padding-left: 50px;
 }

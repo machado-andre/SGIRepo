@@ -1,33 +1,100 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="objectView.css">
-        <title>Modelo 3D</title>
-        <style>
-            body {
-                overflow: hidden!important; 
-                margin: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="imgObj"><canvas id="canvas"></canvas>
+
+<head>
+    <link rel="stylesheet" href="objectView.css">
+    <title>Modelo 3D</title>
+    <style>
+        body {
+            overflow: hidden !important;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <script>
+        function homepage() {
+            window.open("./index.html")
+        }
+        function openLeftDoor() {
+            document.getElementById("btn_openLeftDoor").style.display = "none"
+            document.getElementById("btn_closeLeftDoor").style.display = "inline"
+        }
+        function closeLeftDoor() {
+            document.getElementById("btn_openLeftDoor").style.display = "inline"
+            document.getElementById("btn_closeLeftDoor").style.display = "none"
+        }
+        function openRightDoor() {
+            document.getElementById("btn_openRightDoor").style.display = "none"
+            document.getElementById("btn_closeRightDoor").style.display = "inline"
+        }
+        function closeRightDoor() {
+            document.getElementById("btn_openRightDoor").style.display = "inline"
+            document.getElementById("btn_closeRightDoor").style.display = "none"
+        }
+        function openBotDrawer() {
+            document.getElementById("btn_openBotDrawer").style.display = "none"
+            document.getElementById("btn_closeBotDrawer").style.display = "inline"
+        }
+        function closeBotDrawer() {
+            document.getElementById("btn_openBotDrawer").style.display = "inline"
+            document.getElementById("btn_closeBotDrawer").style.display = "none"
+        }
+        function openTopDrawer() {
+            document.getElementById("btn_openTopDrawer").style.display = "none"
+            document.getElementById("btn_closeTopDrawer").style.display = "inline"
+        }
+        function closeTopDrawer() {
+            document.getElementById("btn_openTopDrawer").style.display = "inline"
+            document.getElementById("btn_closeTopDrawer").style.display = "none"
+        }
+    </script>
+</head>
+
+<body>
+    <div class="head">
+        <img src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()" />
+    </div>
+    <div class="imgObj"><canvas id="canvas"></canvas></div>
+
+    <div class="commands">
+        <p>
+            <button onclick="openLeftDoor()" class="button" id="btn_openLeftDoor">Abrir porta da esquerda</button>
+            <button style="display: none" onclick="closeLeftDoor()" class="button" id="btn_closeLeftDoor">Fechar porta da esquerda</button>
+
+            <button onclick="openRightDoor()" class="button" id="btn_openRightDoor">Abrir porta da direita</button>
+            <button style="display: none" onclick="closeRightDoor()" class="button" id="btn_closeRightDoor">Fechar porta da direita</button>
+
+            <button onclick="openBotDrawer()" class="button" id="btn_openBotDrawer">Abrir gaveta de cima</button>
+            <button style="display: none" onclick="closeBotDrawer()" class="button" id="btn_closeBotDrawer">Fechar gaveta de cima</button>
+
+            <button onclick="openTopDrawer()" class="button" id="btn_openTopDrawer">Abrir gaveta de baixo</button>
+            <button style="display: none" onclick="closeTopDrawer()" class="button" id="btn_closeTopDrawer">Fechar gaveta de baixo</button>
+        </p>
+        <div class="colors">
+            <div class="textura">
+                <h3>Tipo de Madeira</h3>
+                <div class="tipos">
+                    <div class="item"><img id="darkWood" src="models/textures/darkWood.png" width="50px" height="50px" /> Madeira Escura</div>
+                    <div class="item"><img id="lightWood" src="models/textures/lightWood.png" width="50px"height="50px" />Pinho</div>
+                    <div class="item"><img id="oakWood" src="models/textures/oakWood.png" width="50px"height="50px" />Carvalho</div>
+                </div>
+                <h3>Tipos de Rede de Porta</h3>
+                <div class="tipos">
+                    <div class="item"><img id="silk" src="models/textures/silk.png" width="50px" height="50px" />Seda Escura</div>
+                    <div class="item"><img id="woodenNet" src="models/textures/woodenNet.png" width="50px"height="50px" />Rede de madeira</div>
+                </div>
+            </div>
         </div>
-        <div>
-            <p>
-                <button id="btn_leftDoor">Left Door</button>
-                <button id="btn_rightDoor">Right Door</button>
-                <button id="btn_botDrawer">Bottom Drawer</button>
-                <button id="btn_topDrawer">Top Drawer</button>
-            </p>
-        </div>
-    </body>
-    <script src="/node_modules/three/build/three.min.js"></script>
-    <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
-    <script src="main.js"></script>
+
+    </div>
+    </div>
+</body>
+<script src="/node_modules/three/build/three.min.js"></script>
+<script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+<script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+<script src="main.js"></script>
+
 </html>
