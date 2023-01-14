@@ -125,10 +125,14 @@
             width: 63%;
             height: auto;
             background-color: orange;
+            display:flex;
+            flex-direction: column;
         }
         .maintable .imgObj .box{
-            
-            background-color: red;
+            display: flex;
+            align-self: flex-end;
+            padding-right: 20px;
+            padding-top: 5px;
         }
         .maintable .imgObj .imgObject{
            width: auto;
@@ -136,6 +140,11 @@
         }
 
         .maintable .imgObj .imgObject .divimagem{
+            width: 90%;
+            margin: auto;
+        }
+
+        .maintable .imgObj .imgObject #obj3d{
             width: 90%;
             margin: auto;
         }
@@ -159,11 +168,12 @@
         }
         function getTicked(){
             if(document.getElementById("check").checked){
-                document.getElementById("imgdet").style.display = "none"
-                document.getElementById("obj3d").style.display = "block"
+                //document.getElementById("imgdet").style.display = "none"
+                //document.getElementById("obj3d").style.display = "block"
+                document.getElementById("imgObject").innerHTML='<img id="imgdet" src="images/Movel1.png">'
             }else{
-                document.getElementById("obj3d").style.display = "none"
-                document.getElementById("imgdet").style.display = "block"
+                //document.getElementById("obj3d").style.display = "none"
+                //document.getElementById("imgdet").style.display = "block"
             }
         }
 </script>
@@ -197,17 +207,17 @@
                     <span class="labels" data-on="Imagem" data-off="3D"></span>
                 </label>
             </div>
-            <div class="imgObject">
-                <div class="divimagem">
-                    <img id="imgdet" src="images/Movel1.png">
+            <div class="imgObject" id="imgObject">
+                <div class="divimagem" id="imgdet">
+                    teste
+                    <!-- <img id="imgdet" src="images/Movel1.png"> -->
                 </div>
-                
-                <div id="obj3d" width="600px" height="600px">
-                    <script src="/node_modules/three/build/three.min.js"></script>
-                    <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
-                    <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
-                    <script src="main.js"></script>
-                </div>
+            </div>
+            <div id="obj3d">
+                <script src="/node_modules/three/build/three.min.js"></script>
+                <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+                <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+                <script src="main.js"></script>
             </div>
         </div>
         <div class="iteminfo">
@@ -275,9 +285,4 @@
     </table> -->
     
 </body>
-<script>
-    function homepage(){
-        window.open("./index.html")
-    }
-</script>
 </html>
