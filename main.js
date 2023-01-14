@@ -10,15 +10,10 @@ let myCanvas = document.getElementById('canvas')
 var renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
 document.body.appendChild(renderer.domElement);
 
-renderer.setSize( window.innerWidth/3, window.innerHeight/3)
+renderer.setSize( window.innerWidth/2, window.innerHeight/2)
 renderer.shadowMap.enabled = true
 let controls = new THREE.OrbitControls(camera, renderer.domElement)
 let material = new THREE.Mesh('models/textures');
-
-/*let axes = new THREE.AxesHelper(10)
-scene.add(axes)
-let grid = new THREE.GridHelper()
-scene.add(grid)*/
 
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.toneMappingExposure = 4;
@@ -43,7 +38,7 @@ new THREE.GLTFLoader().load(
         scene.traverse( function(x) {
             if (x.isMesh) {
                 x.castShadow = true
-                x.receiveShadow = true			
+                x.receiveShadow = true
             }
 
         })
@@ -69,17 +64,13 @@ new THREE.GLTFLoader().load(
         botDrawer.clampWhenFinished = true;
         
         rack = scene.getObjectByName('rack');
-        rack.material.map = textureLoader.load("models/textures/Wood028_2K_Color.png");
+        rack.material.map = textureLoader.load("models/textures/Wood1.png");
 
-        doorRight1 = scene.getObjectByName('Cube015');
-        doorRight2 = scene.getObjectByName('Cube015_2');
-        doorRight1.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
-        doorRight2.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
+        doorRight = scene.getObjectByName('Cube015');
+        doorRight.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
         
-        doorLeft1 = scene.getObjectByName('Cube009');
-        doorLeft2 = scene.getObjectByName('Cube009_2');
-        doorLeft1.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
-        doorLeft2.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
+        doorLeft = scene.getObjectByName('Cube009');
+        doorLeft.material.map = textureLoader.load("models/textures/Wicker001_1K_Color.png");
 })
 
 btn_leftDoor.addEventListener('click', function leftDoorOpen(){
@@ -115,8 +106,10 @@ function addLights(){
 
     const lightDir = new THREE.DirectionalLight( 0xE5E5DA, 1 );
     lightDir.position.set(2,8,10)
-    const dlHelper = new THREE.DirectionalLightHelper(lightDir, 1, 0xFF0000);
-    scene.add(dlHelper);
     scene.add( lightDir );
 }
 
+function changeMaterial(material){
+    switch(material){
+    }
+}

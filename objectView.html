@@ -148,6 +148,12 @@
             height: auto;
             background-color: green;
         }
+        #canvas {
+            z-index: 2;
+            position: absolute;
+            left: 175px;
+            top: 210px;
+        }
     </style>
     <script>
         function homepage(){
@@ -159,11 +165,11 @@
         }
         function getTicked(){
             if(document.getElementById("check").checked){
-                //document.getElementById("obj3d").style.display = "none"
                 document.getElementById("canvas").style.display = "block"
+                document.getElementById("divimagem").style.display = "none"
             }else{
+                document.getElementById("divimagem").style.display = "block"
                 document.getElementById("canvas").style.display = "none"
-                //document.getElementById("obj3d").style.display = "block"
             }
         }
 </script>
@@ -180,7 +186,7 @@
             <button id="btn_topDrawer">Top Drawer</button>
         </p>
     </div>
-    <div class="maintable">
+    <div class="maintable" class="col-md-6">
         <div class="items">
             <div><img src="images/Movel1.png" width="100px" height="100px" onclick="getImage('images/Movel1.png')"></div>
             <div><img src="images/Movel1_2.png" width="100px" height="100px" onclick="getImage('images/Movel1_2.png')"></div>
@@ -195,15 +201,15 @@
                 <span class="slider"></span>
                 <span class="labels" data-on="Imagem" data-off="3D"></span>
             </label>
-            <canvas id="canvas"></canvas>
-                <div class="box">
-                </div>
-                <div class="imgObject">
-                    <!--<div class="divimagem">
-                        <img  src="images/Movel1.png">
-                    </div> -->
-                </div>
+            <div class="col-md-3">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="imgObject">
+            </div>
         </div>
+        <!--<div class="divimagem">
+            <img  src="images/Movel1.png">
+        </div> -->
         <div class="iteminfo">
             info
         </div>
