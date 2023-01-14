@@ -10,7 +10,7 @@ let myCanvas = document.getElementById('canvas')
 var renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
 document.body.appendChild(renderer.domElement);
 
-renderer.setSize( window.innerWidth/2, window.innerHeight/2)
+renderer.setSize( window.innerWidth/1.5, window.innerHeight/1.5)
 renderer.shadowMap.enabled = true
 let controls = new THREE.OrbitControls(camera, renderer.domElement)
 let material = new THREE.Mesh('models/textures');

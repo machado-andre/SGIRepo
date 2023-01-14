@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="objectView.css">
+        <title>Modelo 3D</title>
+        <style>
+            body {
+                overflow: hidden!important; 
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
     <body>
+        <div class="imgObj"><canvas id="canvas"></canvas>
+        </div>
         <div>
-            isto é um teste
+            <p>
+                <button id="btn_leftDoor">Left Door</button>
+                <button id="btn_rightDoor">Right Door</button>
+                <button id="btn_botDrawer">Bottom Drawer</button>
+                <button id="btn_topDrawer">Top Drawer</button>
+            </p>
         </div>
     </body>
+    <script src="/node_modules/three/build/three.min.js"></script>
+    <script src="/node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+    <script src="main.js"></script>
 </html>
