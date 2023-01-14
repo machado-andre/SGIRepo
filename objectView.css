@@ -210,10 +210,10 @@ body {
 
 .button {
     background: #767676; 
-    border: 2px solid #000000; 
+    border: 1px solid #000000; 
     border-radius: 10px;
     color: white;
-    padding: 16px 32px;
+    padding: 16px 20px;
     text-align: center;
     font-size: 13px;
     margin: 4px 2px;

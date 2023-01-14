@@ -54,11 +54,9 @@ new THREE.GLTFLoader().load(
         
         //#region materials
         rack = scene.getObjectByName('rack');
-        tvScreen = scene.getObjectByName('Plane002')
         doorRight = scene.getObjectByName('Cube015');
         doorLeft = scene.getObjectByName('Cube009');
         plane = scene.getObjectByName('plane');
-        //tvScreen.material = textureLoader.load("models/textures/meme.png")
         plane.material.map = textureLoader.load("models/textures/tileStone.png")
         rack.material.map = textureLoader.load("models/textures/darkWood.png");
         doorRight.material.map = textureLoader.load("models/textures/woodenNet.png");

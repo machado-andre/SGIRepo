@@ -16,7 +16,7 @@
     </style>
     <script>
         function homepage() {
-            window.open("./index.html")
+            window.open("./index.html","_self")
         }
         function openLeftDoor() {
             document.getElementById("btn_openLeftDoor").style.display = "none"
@@ -55,23 +55,23 @@
 
 <body>
     <div class="head">
-        <img src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()" />
+        <img style="cursor: pointer" src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()"/>
     </div>
     <div class="imgObj"><canvas id="canvas"></canvas></div>
 
     <div class="commands">
         <p>
-            <button onclick="openLeftDoor()" class="button" id="btn_openLeftDoor">Abrir porta da esquerda</button>
-            <button style="display: none" onclick="closeLeftDoor()" class="button" id="btn_closeLeftDoor">Fechar porta da esquerda</button>
+            <button onclick="openLeftDoor()" class="button" id="btn_openLeftDoor">Abrir Porta da Esquerda</button>
+            <button style="display: none" onclick="closeLeftDoor()" class="button" id="btn_closeLeftDoor">Fechar Porta da Esquerda</button>
 
-            <button onclick="openRightDoor()" class="button" id="btn_openRightDoor">Abrir porta da direita</button>
-            <button style="display: none" onclick="closeRightDoor()" class="button" id="btn_closeRightDoor">Fechar porta da direita</button>
+            <button onclick="openRightDoor()" class="button" id="btn_openRightDoor">Abrir Porta da Direita</button>
+            <button style="display: none" onclick="closeRightDoor()" class="button" id="btn_closeRightDoor">Fechar Porta da Direita</button>
 
-            <button onclick="openBotDrawer()" class="button" id="btn_openBotDrawer">Abrir gaveta de cima</button>
-            <button style="display: none" onclick="closeBotDrawer()" class="button" id="btn_closeBotDrawer">Fechar gaveta de cima</button>
+            <button onclick="openBotDrawer()" class="button" id="btn_openBotDrawer">Abrir Gaveta de Cima</button>
+            <button style="display: none" onclick="closeBotDrawer()" class="button" id="btn_closeBotDrawer">Fechar Gaveta de Cima</button>
 
-            <button onclick="openTopDrawer()" class="button" id="btn_openTopDrawer">Abrir gaveta de baixo</button>
-            <button style="display: none" onclick="closeTopDrawer()" class="button" id="btn_closeTopDrawer">Fechar gaveta de baixo</button>
+            <button onclick="openTopDrawer()" class="button" id="btn_openTopDrawer">Abrir Gaveta de Baixo</button>
+            <button style="display: none" onclick="closeTopDrawer()" class="button" id="btn_closeTopDrawer">Fechar Gaveta de Baixo</button>
         </p>
         <div class="colors">
             <div class="textura">

@@ -6,7 +6,7 @@
     <title>Projeto prático Avaliação SGI</title>
     <script>
         function homepage(){
-            window.open("./index.html")
+            window.open("./index.html","_self")
         }
         function getImage(imagem) {
             console.log(imagem)
@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="head">
-        <img src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()"/>
+        <img style="cursor: pointer" src="images/La-redoute-brand-logo.png" height="100px" width="100px" onclick="homepage()"/>
     </div>
     <div class="maintable">
         <div class="items">
